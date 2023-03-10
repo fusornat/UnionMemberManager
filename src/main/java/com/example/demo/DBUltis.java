@@ -42,12 +42,16 @@ public class DBUltis {
         Connection connection = null;
         PreparedStatement preparedStatement =  null;
         ResultSet resultSet = null;
+        String query = " SELECT password FROM users WHERE username=?";
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/QLDV_app", "root","admin" );
-            preparedStatement = connection.prepareStatement(" SELECT password FROM users WHERE username= ?");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/QLDV_app", 
+                    "root",
+                    "admin" );
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.isBeforeFirst()){
+            if (!resultSet.isBeforeFirst()){
                 System.out.println("Không tìm thấy người dùng trong cơ sở dữ liệu");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Thông tin đăng nhập không đúng!");
