@@ -21,8 +21,8 @@ public class LoggedInController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-
+            public void handle(ActionEvent event) {
+            DBUltis.changeScene(event, "hello-view", "Hệ thống quản lý đoàn viên", null);
             }
         });
 

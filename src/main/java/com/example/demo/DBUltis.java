@@ -44,7 +44,7 @@ public class DBUltis {
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/QLDV_app", "root","admin" );
-            preparedStatement = connection.prepareStatement(" SELECT password FROM users WHERE username = ?");
+            preparedStatement = connection.prepareStatement(" SELECT password FROM users WHERE username= ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()){
